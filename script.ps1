@@ -46,10 +46,6 @@ $configContent | Out-File -Encoding UTF8 -FilePath "config.cfg"
 
 Write-Host "config.cfg file created."
 
-openssl req -new -out example.csr -req req.cfg
-
-Write-Host "CSR file created: example.csr"
-
 # Generate the certificate
 openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout cert.key -out cert.pem -req req.cfg -sha256
 
