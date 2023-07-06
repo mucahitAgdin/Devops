@@ -1,9 +1,9 @@
-$country = Read-Host "Enter country code (e.g., US):"
-$state = Read-Host "Enter state or region code (e.g., VA):"
-$city = Read-Host "Enter city name:"
-$company = Read-Host "Enter company name:"
-$division = Read-Host "Enter division name:"
-$commonName = Read-Host "Enter Common Name (CN):"
+$country = Read-Host "Enter country code"
+$state = Read-Host "Enter state or region code"
+$city = Read-Host "Enter city name"
+$company = Read-Host "Enter company name"
+$division = Read-Host "Enter division name"
+$commonName = Read-Host "Enter Common Name "
 
 $altNames = @()
 
@@ -46,11 +46,11 @@ $configContent | Out-File -Encoding UTF8 -FilePath "config.cfg"
 
 Write-Host "config.cfg file created."
 
-openssl req -new -out example.csr -config config.cfg
+openssl req -new -out example.csr -req req.cfg
 
 Write-Host "CSR file created: example.csr"
 
 # Generate the certificate
-openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout cert.key -out cert.pem -config config.cfg -sha256
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout cert.key -out cert.pem -req req.cfg -sha256
 
 Write-Host "Certificate created: cert.key, cert.pem"
