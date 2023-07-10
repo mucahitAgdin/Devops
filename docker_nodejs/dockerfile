@@ -1,0 +1,7 @@
+FROM node:latest
+WORKDIR C:\Users\agdin\OneDrive\Masaüstü\docker_nodejs\app
+COPY package*.json ./
+RUN npm install
+COPY . .
+EXPOSE 8080
+CMD ["node","index.js"]
